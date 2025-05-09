@@ -10,8 +10,8 @@ figma.ui.onmessage = async (msg) => {
     }
 
     const frame = selected[0];
-    if (frame.type !== "FRAME") {
-      figma.notify("❌ Vui lòng chọn một Frame.");
+    if (!("findAll" in frame)) {
+      figma.notify("❌ Vui lòng chọn Frame hoặc Component.");
       return;
     }
 
