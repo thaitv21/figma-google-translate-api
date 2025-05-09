@@ -10,6 +10,13 @@ figma.ui.onmessage = async (msg) => {
     }
 
     const frame = selected[0];
+
+    if (frame.type === 'TEXT') {
+      await figma.loadFontAsync(node.fontName);
+      const translated = await translateText(frame.characters, msg.targetLang);
+      frame.characters = translated;
+    }
+
     if (!("findAll" in frame)) {
       figma.notify("❌ Vui lòng chọn Frame hoặc Component.");
       return;
