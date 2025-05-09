@@ -12,7 +12,7 @@ figma.ui.onmessage = async (msg) => {
     const frame = selected[0];
 
     if (frame.type === 'TEXT') {
-      await figma.loadFontAsync(node.fontName);
+      await figma.loadFontAsync(frame.fontName);
       const translated = await translateText(frame.characters, msg.targetLang);
       frame.characters = translated;
     }
