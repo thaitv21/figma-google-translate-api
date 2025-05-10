@@ -14,7 +14,9 @@ figma.ui.onmessage = async (msg) => {
     if (frame.type === 'TEXT') {
       await figma.loadFontAsync(frame.fontName);
       const translated = await translateText(frame.characters, msg.targetLang);
+      figma.notify(translated);
       frame.characters = translated;
+      return
     }
 
     if (!("findAll" in frame)) {
